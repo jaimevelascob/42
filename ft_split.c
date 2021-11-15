@@ -6,12 +6,11 @@
 /*   By: jvelasco <jvelasco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 12:44:05 by jvelasco          #+#    #+#             */
-/*   Updated: 2021/11/14 16:20:19 by jvelasco         ###   ########.fr       */
+/*   Updated: 2021/11/15 18:42:34 by jvelasco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 char	**cpy(int count, char **new, char const *s, char c)
 {
 	int	j;

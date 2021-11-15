@@ -6,7 +6,7 @@
 /*   By: jvelasco <jvelasco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:33:20 by jvelasco          #+#    #+#             */
-/*   Updated: 2021/11/14 16:36:52 by jvelasco         ###   ########.fr       */
+/*   Updated: 2021/11/15 18:03:16 by jvelasco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,16 @@ typedef struct s_list {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
-
+// listas
+void			ft_lstiter(t_list *lst, void (*f)(void *));
+void			ft_lstclear(t_list **lst, void (*del)(void*));
+void			ft_lstdelone(t_list *lst, void (*del)(void*));
+void			ft_lstadd_back(t_list **lst, t_list *new);
 int				ft_lstsize(t_list *lst);
 void			ft_lstadd_front(t_list **lst, t_list *new);
+t_list			*ft_lstlast(t_list *lst);
 t_list			*ft_lstnew(void *content);
+
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int nb, int fd);
 void			ft_putstr_fd(char *s, int fd);
