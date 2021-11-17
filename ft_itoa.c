@@ -6,13 +6,12 @@
 /*   By: jvelasco <jvelasco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 17:17:28 by jvelasco          #+#    #+#             */
-/*   Updated: 2021/11/12 18:16:36 by jvelasco         ###   ########.fr       */
+/*   Updated: 2021/11/17 16:04:06 by jvelasco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-long int	divide_numb(long c)
+static long int	divide_numb(long c)
 {
 	int	count;
 
@@ -32,7 +31,7 @@ long int	divide_numb(long c)
 	return (count);
 }
 
-char	*fill_array(char *new, long number, long int count)
+static char	*fill_array(char *new, long number, long int count)
 {
 	int	i;
 
