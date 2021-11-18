@@ -24,8 +24,8 @@ all: $(NAME)
 $(NAME): $(OBJ) $(INCLUDE)
 	$(LIB) $(NAME) $(OBJ)
 
-bonus: $(OBJ) $(BONUSOBJ) $(INCLUDE)
-	$(LIB) $(NAME) $(BONUSOBJ) $(OBJ)
+bonus: $(BONUSOBJ) $(NAME)
+	@make OBJ="$(BONUSOBJ)" all
 
 %.o: %.c
 	$(CC) $(CCFLAGS) -c -o $@ $<

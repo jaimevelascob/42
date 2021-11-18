@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvelasco <jvelasco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 21:24:09 by jvelasco          #+#    #+#             */
-/*   Updated: 2021/11/18 10:06:24 by jvelasco         ###   ########.fr       */
+/*   Created: 2021/11/08 15:39:25 by jvelasco          #+#    #+#             */
+/*   Updated: 2021/11/18 20:22:45 by jvelasco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-char	*ft_strchr(const char *s, int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int	i;
+	char			*news;
+	size_t			i;
+	size_t			size;
 
-	i = 0;
-	while (s[i])
+	if (!s)
+		return (0);
+	size = ft_strlen(s);
+	if (size > len)
+		size = len;
+	news = malloc(size + 1);
+	if (!news)
+		return (0);
+	if (start >= (unsigned int)ft_strlen(s) || start > len)
 	{
-		if (s[i] == c)
-			return ((char *)s + i);
+		free(news);
+		return (ft_strdup(""));
+	}
+	i = 0;
+	while (s[i + start] && i < len)
+	{
+		news[i] = s[start + i];
 		i++;
 	}
-	if (s[i] == c)
-		return ((char *)s + i);
-	return (0);
+	news[i] = 0;
+	return (news);
 }
