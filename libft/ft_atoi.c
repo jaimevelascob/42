@@ -6,32 +6,15 @@
 /*   By: jvelasco <jvelasco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 13:13:14 by jvelasco          #+#    #+#             */
-/*   Updated: 2021/11/13 11:44:20 by jvelasco         ###   ########.fr       */
+/*   Updated: 2021/11/18 17:44:57 by jvelasco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_calculate(char *str, int i, int oper)
-{
-	long	res;
+static int	ft_calculate(const char *str, int i, int oper);
 
-	res = 0;
-	if (str[i] >= '0' && str[i] <= '9')
-	{
-		while (str[i] >= '0' && str[i] <= '9')
-		{
-			if ((res * oper) > 2147483647)
-				return (-1);
-			else if ((res * oper) < -2147483648)
-				return (0);
-			res = (res * 10) + (str[i++] - '0');
-		}
-	}
-	return (res * oper);
-}
-
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int		i;
 	int		oper;
@@ -51,4 +34,23 @@ int	ft_atoi(char *str)
 		i++;
 	res = ft_calculate(str, i, oper);
 	return (res);
+}
+
+static int	ft_calculate(const char *str, int i, int oper)
+{
+	long	res;
+
+	res = 0;
+	if (str[i] >= '0' && str[i] <= '9')
+	{
+		while (str[i] >= '0' && str[i] <= '9')
+		{
+			if ((res * oper) > 2147483647)
+				return (-1);
+			else if ((res * oper) < -2147483648)
+				return (0);
+			res = (res * 10) + (str[i++] - '0');
+		}
+	}
+	return (res * oper);
 }

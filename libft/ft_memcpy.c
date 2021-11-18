@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvelasco <jvelasco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 15:39:25 by jvelasco          #+#    #+#             */
-/*   Updated: 2021/11/11 13:21:27 by jvelasco         ###   ########.fr       */
+/*   Created: 2021/11/05 21:21:21 by jvelasco          #+#    #+#             */
+/*   Updated: 2021/11/18 17:38:48 by jvelasco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	*news;
-	int		i;
-	int		lens;
+	size_t	i;
 
-	if (!s)
+	if (!dst && !src)
 		return (0);
 	i = 0;
-	lens = ft_strlen(s);
-	news = malloc(len + 1);
-	if (!news)
-		return (NULL);
-	while (i < (int)len && start < (unsigned int)lens)
-		news[i++] = s[start++];
-	news[i] = 0;
-	return (news);
+	while (i < n)
+	{
+		*((char *)dst + i) = *((char *)src + i);
+		i++;
+	}
+	return (dst);
 }

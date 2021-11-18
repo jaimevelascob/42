@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvelasco <jvelasco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/15 18:49:22 by jvelasco          #+#    #+#             */
-/*   Updated: 2021/11/15 19:02:00 by jvelasco         ###   ########.fr       */
+/*   Created: 2021/11/05 21:23:01 by jvelasco          #+#    #+#             */
+/*   Updated: 2021/11/18 09:50:28 by jvelasco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	t_list	*ptr;
-	
-	while(lst)
-	{
+	size_t	i;
+	size_t	j;
+	size_t	x;
+	size_t	y;
 
+	i = 0;
+	x = ft_strlen(dest);
+	y = ft_strlen(src);
+	j = x;
+	if (size < x)
+		return (y + size);
+	else
+	{
+		while (src[i] && (j + 1 < size))
+		{
+			dest[j] = src[i];
+			j++;
+			i++;
+		}
+		dest[j] = '\0';
+		return (x + y);
 	}
 }

@@ -1,48 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvelasco <jvelasco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 17:02:42 by jvelasco          #+#    #+#             */
-/*   Updated: 2021/11/12 19:12:18 by jvelasco         ###   ########.fr       */
+/*   Created: 2021/11/08 15:39:25 by jvelasco          #+#    #+#             */
+/*   Updated: 2021/11/18 10:05:33 by jvelasco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*news;
 	int		i;
-	int		j;
+	int		lens;
 
-	i = 0;
-	j = 0;
-	if (!s1)
+	if (!s)
 		return (0);
-	news = malloc((ft_strlen(s1) + ft_strlen(s2)) + 1);
+	i = 0;
+	lens = ft_strlen(s);
+	news = malloc(len + 1);
 	if (!news)
 		return (NULL);
-	while (i < ft_strlen(s1))
-	{	
-		news[i] = s1[i];
-		i++;
-	}
-	while (j < ft_strlen(s2))
-	{
-		news[i] = s2[j];
-		i++;
-		j++;
-	}
+	while (i < (int)len && start < (unsigned int)lens)
+		news[i++] = s[start++];
 	news[i] = 0;
 	return (news);
 }
-
-// int main(void)
-// {
-// 	char str[] = "loremim";
-// 	char str2[] = "psum klk";
-
-// 	printf("%s", ft_strjoin(str, str2));
-// }
